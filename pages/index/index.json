@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-popup": "../../dist/popup/index"
+  },
+  "navigationBarTitleText": "地图组件"
+}

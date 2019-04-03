@@ -1,0 +1,96 @@
+
+image{
+  width: 100%;
+  height: 100%;
+}
+
+.page-section-gap{
+  position: relative;
+  box-sizing: border-box;
+}
+
+.page-body-button {
+  margin-bottom: 30rpx;
+}
+
+.coverView{
+  position: absolute;
+  right: 0;
+  top: 10rpx;
+}
+
+.block{
+  width: 90rpx;
+  height: 120rpx;
+  background: white;
+  padding:5rpx 0;
+  margin-bottom:25rpx;
+  border-radius:10rpx;
+}
+
+.iconDiv{
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 auto;
+}
+
+.name{
+  padding-top: 10rpx;
+  text-align: center;
+  font-size: 24rpx;
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.result{
+  width: 100%;
+  height: 100%;
+}
+
+.title{
+  font-size: 28rpx;
+}
+
+.value{
+  font-size: 28rpx;
+}
+
+.line{
+  padding: 35rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:0 50rpx;
+  border-bottom:1rpx solid #bbb;
+}
+
+.lastLine{
+  border: none;
+}
+
+.closeLine{
+  padding: 15rpx;
+  background: rgba(247, 247, 247, 1);
+}
+
+.closeDiv{
+   width: 40rpx;
+   height: 40rpx;
+}
+
+.moreIcon{
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.search{
+  font-size: 32rpx;
+  color: white;
+  background: linear-gradient(to right,#1A66DF,#0CD7FF);
+  padding: 22rpx 0;
+  text-align: center;
+  margin:40rpx 20rpx;
+  border-radius: 10rpx;
+}

@@ -1,0 +1,58 @@
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width: 100%; height: {{sysInfo.windowHeight}}px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      covers="{{covers}}"
+      subkey='{{subkey}}'
+      show-location,
+      bindmarkertap='changeMarker'>
+              <!-- 操作按钮 -->
+              <cover-view class='coverView'>
+                  <!-- 办税点筛选 -->
+                  <cover-view class='block' wx:for = '{{funs}}' wx:for-item = 'fun' wx:key='' bindtap='goto' data-link = '{{fun.link}}'>
+                        <cover-view class='iconDiv'>
+                              <cover-image src='{{fun.iconPath}}'></cover-image>
+                        </cover-view>
+                        <cover-view class='name'>{{fun.name}}</cover-view>
+                  </cover-view>
+
+              </cover-view>
+
+              <!-- 弹出框 -->
+              <cover-view>
+                    <van-popup show='{{show}}' position='right' overlay='{{true}}' bind:close='onClose' close-on-click-overlay = '{{true}}'>
+                              <cover-view class='result' style='width: {{sysInfo.windowWidth*0.8}}px; height: {{sysInfo.windowHeight}}px'>
+                                    <!-- closeLine -->
+                                    <cover-view class='closeLine'>
+                                          <cover-view class='closeDiv' bindtap='onClose' >
+                                                <cover-image src='../../image/close.png'></cover-image>
+                                          </cover-view>
+                                    </cover-view>
+
+                                    <!-- 选择类型 -->
+                                    <cover-view class='line {{chooseIndex == (chooseList.length-1) ? "lastLine" : ""}}' wx:for = '{{chooseList}}' wx:key = '' wx:for-index = 'chooseIndex'>
+                                          <cover-view class='title'>{{item.title}}</cover-view>
+                                          <cover-view class='value'>{{item.data[0].name}}</cover-view>
+                                          <cover-view class='moreIcon'>
+                                                      <cover-image src='../../image/more.png'></cover-image>
+                                          </cover-view>
+                                    </cover-view>
+                                  
+
+                                    <cover-view class='search'>筛选</cover-view>
+
+                              </cover-view>
+                    </van-popup>
+              </cover-view>
+      </map>
+  </view>
+  <view class="btn-area">
+    <view bindtap='showPopup'>弹出层</view>
+   
+    
+  </view>
+</view>
