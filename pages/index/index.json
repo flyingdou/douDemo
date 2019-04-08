@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "van-popup": "../../dist/popup/index"
+    "i-drawer": "../../dist/drawer/index"
   },
   "navigationBarTitleText": "地图组件"
 }

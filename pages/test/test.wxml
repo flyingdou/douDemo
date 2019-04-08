@@ -1,0 +1,12 @@
+<view class = 'content'>
+      <i-drawer mode='right' i-class = 'drawer' visible='{{show}}' bind:close='onClose' >
+      <!-- style='width: {{sysInfo.windowWidth*0.8}}px; height: {{sysInfo.windowHeight}}px' -->
+          <view class='result' >
+                这里是弹出框类容
+          </view>
+      </i-drawer>
+
+
+      <view class='showPopup' bindtap='showPopup'>打开</view>
+
+</view>

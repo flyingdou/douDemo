@@ -1,36 +1,42 @@
-import { VantComponent } from '../common/component';
-import { RED, BLUE, GREEN } from '../common/color';
-var DEFAULT_COLOR = '#999';
-var COLOR_MAP = {
-  danger: RED,
-  primary: BLUE,
-  success: GREEN
-};
-VantComponent({
-  props: {
-    size: String,
-    type: String,
-    mark: Boolean,
-    color: String,
-    plain: Boolean,
-    round: Boolean,
-    textColor: String
-  },
-  computed: {
-    style: function style() {
-      var color = this.data.color || COLOR_MAP[this.data.type] || DEFAULT_COLOR;
-      var key = this.data.plain ? 'color' : 'background-color';
-      var style = {
-        [key]: color
-      };
-
-      if (this.data.textColor) {
-        style.color = this.data.textColor;
-      }
-
-      return Object.keys(style).map(function (key) {
-        return key + ": " + style[key];
-      }).join(';');
+Component({
+    externalClasses: ['i-class'],
+    properties : {
+        //slot name
+        name : {
+            type : String,
+            value : ''
+        },
+        //can click or not click
+        checkable : {
+            type : Boolean,
+            value : false
+        },
+        //is current choose
+        checked : {
+            type : Boolean,
+            value : true
+        },
+        //background and color setting
+        color : {
+            type : String,
+            value : 'default'
+        },
+        //control fill or not
+        type : {
+            type : String,
+            value : 'dot'
+        } 
+    },
+    methods : {
+        tapTag(){
+            const data = this.data;
+            if( data.checkable ){
+                const checked = data.checked ? false : true;
+                this.triggerEvent('change',{
+                    name : data.name || '',
+                    checked : checked
+                });
+            }
+        }
     }
-  }
-});
+})

@@ -13,7 +13,7 @@
               <!-- 操作按钮 -->
               <cover-view class='coverView'>
                   <!-- 办税点筛选 -->
-                  <cover-view class='block' wx:for = '{{funs}}' wx:for-item = 'fun' wx:key='' bindtap='goto' data-link = '{{fun.link}}'>
+                  <cover-view class='block' wx:for = '{{funs}}' wx:for-item = 'fun' wx:key='' bindtap='{{fun.fun}}' data-link = '{{fun.link}}'>
                         <cover-view class='iconDiv'>
                               <cover-image src='{{fun.iconPath}}'></cover-image>
                         </cover-view>
@@ -24,8 +24,14 @@
 
               <!-- 弹出框 -->
               <cover-view>
-                    <van-popup show='{{show}}' position='right' overlay='{{true}}' bind:close='onClose' close-on-click-overlay = '{{true}}'>
-                              <cover-view class='result' style='width: {{sysInfo.windowWidth*0.8}}px; height: {{sysInfo.windowHeight}}px'>
+                    
+              </cover-view>
+      </map>
+
+      <view>
+            <i-drawer mode='right' visible='{{show}}' bind:close='onClose' >
+            <!-- style='width: {{sysInfo.windowWidth*0.8}}px; height: {{sysInfo.windowHeight}}px' -->
+                              <cover-view class='result' >
                                     <!-- closeLine -->
                                     <cover-view class='closeLine'>
                                           <cover-view class='closeDiv' bindtap='onClose' >
@@ -46,13 +52,10 @@
                                     <cover-view class='search'>筛选</cover-view>
 
                               </cover-view>
-                    </van-popup>
-              </cover-view>
-      </map>
+             </i-drawer>
+      </view>
   </view>
-  <view class="btn-area">
-    <view bindtap='showPopup'>弹出层</view>
-   
-    
-  </view>
+
+
+
 </view>

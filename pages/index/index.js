@@ -90,7 +90,6 @@ Page({
   },
 
   showPopup() {
-
     obj.setData({show: true});
   },
 
@@ -106,12 +105,14 @@ Page({
       {
         'name': '办税点筛选',
         'iconPath': '../../image/filter.png',
-        'link': '../../index/index'
+        'link': '../../index/index',
+        'fun': 'showPopup'
       },
       {
         'name': '大厅流量查询',
         'iconPath': '../../image/search.png',
-        'link': '../../index/index'
+        'link': '../../index/index',
+        'fun': 'showPopup'
       }
     ];
 
