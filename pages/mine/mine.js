@@ -1,4 +1,4 @@
-var obj = null;
+// pages/mine/mine.js
 Page({
 
   /**
@@ -12,9 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    obj = this;
-    // 初始化页面数据
-    obj.init();
+
   },
 
   /**
@@ -64,32 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  /**
-   * 打开弹出框
-   */
-  showPopup () {
-    obj.setData({
-      show: true
-    });
-  },
-
-  /**
-   * 关闭弹出框
-   */
-  onClose () {
-    obj.setData({
-      show: false
-    });
-  },
-
-  /**
-   * 初始化页面数据
-   */
-  init () {
-    obj.setData({
-      sysInfo: wx.getSystemInfoSync()
-    });
-  },
+  }
 })

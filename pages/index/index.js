@@ -1,277 +1,160 @@
+var app = getApp();
+var util = require('../../utils/util.js');
 var obj = null;
 Page({
-  
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    // subkey: 'P33BZ-ERVKG-JPJQO-I6ZJ3-2GWH7-EVBEQ',
-    show: false,
-    result: '武汉市黄陂区木兰乡',
-    latitude: 23.099994,
-    longitude: 113.324520,
-    markers: [{
-      id: 1,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      name: 'T.I.T 创意园',
-    }],
-    covers: [{
-      latitude: 23.099994,
-      longitude: 113.344520,
-      iconPath: '/image/location.png'
-    }, {
-      latitude: 23.099994,
-      longitude: 113.304520,
-      iconPath: '/image/location.png'
-    }]
+    base_img_url: app.constant.base_domain + 'picture/'
+
   },
 
-  onLoad: function () {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     obj = this;
-    // 初始化页面数据
     obj.init();
   },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
-
-  },
-
-  onReady: function (e) {
-    this.mapCtx = wx.createMapContext('myMap')
-  },
-  getCenterLocation: function () {
-    this.mapCtx.getCenterLocation({
-      success: function (res) {
-        console.log(res.longitude)
-        console.log(res.latitude)
-      }
-    })
-  },
-  moveToLocation: function () {
-    this.mapCtx.moveToLocation()
-  },
-  translateMarker: function () {
-    this.mapCtx.translateMarker({
-      markerId: 1,
-      autoRotate: true,
-      duration: 1000,
-      destination: {
-        latitude: 23.10229,
-        longitude: 113.3345211,
-      },
-      animationEnd() {
-        console.log('animation end')
-      }
-    })
-  },
-  includePoints: function () {
-    this.mapCtx.includePoints({
-      padding: [10],
-      points: [{
-        latitude: 23.10229,
-        longitude: 113.3345211,
-      }, {
-        latitude: 23.00229,
-        longitude: 113.3345211,
-      }]
-    })
-  },
-
-  changeMarker (e) {
-    var markers = obj.data.markers || [];
-    markers.forEach((marker)=>{
-       if (marker.id == e.markerId) {
-         marker.iconPath = '../../image/location.png';
-       }
-    });
-    obj.setData({
-      markers: markers,
-    });
-    
-
-  },
-
-  showPopup() {
-    obj.setData({show: true});
-  },
-
-  onClose() {
-    obj.setData({ show: false });
+   
   },
 
   /**
-   * 初始化页面数据
+   * 生命周期函数--监听页面隐藏
    */
-  init () {
-    var funs = [
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  /**
+   * init
+   */
+  init: () => {
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+
+    var funcList = [
       {
-        'name': '办税点筛选',
-        'iconPath': '../../image/filter.png',
-        'link': '../../index/index',
-        'fun': 'showPopup'
+        'id': 0,
+        'name': '预约',
+        'icon': '../../icon/index-icon/linshi.png',
+        'count': 10
       },
       {
-        'name': '大厅流量查询',
-        'iconPath': '../../image/search.png',
-        'link': '../../index/index',
-        'fun': 'showPopup'
-      }
+        'id': 1,
+        'name': '办税ID',
+        'icon': '../../icon/index-icon/id.png',
+        'count': 8
+      },
+      {
+        'id': 2,
+        'name': '意见反馈',
+        'icon': '../../icon/index-icon/feedback.png',
+        'count': 14
+      },
+      {
+        'id': 3,
+        'name': '排队信息',
+        'icon': '../../icon/index-icon/queue.png',
+        'count': 14
+      },
+      {
+        'id': 3,
+        'name': '纳税信息',
+        'icon': '../../icon/index-icon/weiyanshou.png',
+        'count': 201
+      },
+      
     ];
 
-    var chooseList = [
-      {
-        'title': '类型',
-        'type': 'style',
-        'data': [
-          {
-            'id': 0,
-            'name': '全部',
-          },
-          {
-            'id': 1,
-            'name': '第一税务所(办税服务厅)',
-          },
-          {
-            'id': 2,
-            'name': '税务服务站',
-          },
-          {
-            'id': 3,
-            'name': '邮政代开网点',
-          },
-          {
-            'id': 4,
-            'name': '政务中心',
-          },
-          {
-            'id': 5,
-            'name': '车购税办税网点',
-          },
-          {
-            'id': 6,
-            'name': '专项业务办税点',
-          }
-        ]
-      },
-      {
-        'title': '地区',
-        'type': 'district',
-        'data': [
-          {
-            'id': 0,
-            'name': '全部',
-          },
-          {
-            'id': 1,
-            'name': '江岸区',
-          },
-          {
-            'id': 2,
-            'name': '江汉区',
-          },
-          {
-            'id': 3,
-            'name': '硚口区',
-          },
-          {
-            'id': 4,
-            'name': '汉阳区',
-          },
-          {
-            'id': 5,
-            'name': '武昌区',
-          },
-          {
-            'id': 6,
-            'name': '青山区',
-          },
-          {
-            'id': 7,
-            'name': '东湖高新技术开发区',
-          },
-          {
-            'id': 8,
-            'name': '武汉经济技术开发区',
-          },
-          {
-            'id': 9,
-            'name': '洪山区',
-          },
-          {
-            'id': 10,
-            'name': '东西湖区',
-          },
-          {
-            'id': 11,
-            'name': '蔡甸区',
-          },
-          {
-            'id': 12,
-            'name': '江夏区',
-          },
-          {
-            'id': 13,
-            'name': '黄陂区',
-          }, 
-          {
-            'id': 14,
-            'name': '新洲区',
-          },
-          {
-            'id': 15,
-            'name': '东湖生态旅游风景区',
-          },
-          {
-            'id': 16,
-            'name': '化学工业区',
-          }
-        ]
-      },
-      {
-        'title': '附近',
-        'type': 'nearby',
-        'data': [
-          {
-            'id': 0,
-            'name': '全部',
-          },
-          {
-            'id': 1,
-            'name': '1km',
-          },
-          {
-            'id': 2,
-            'name': '2km',
-          },
-          {
-            'id': 3,
-            'name': '3km',
-          },
-          {
-            'id': 4,
-            'name': '4km',
-          },
-          {
-            'id': 5,
-            'name': '5km',
-          }
-        ]
-      }
-    ];
+    /**
+     * 调整funcList大小
+     */
+    obj.resizeList(funcList,3);
+    wx.hideLoading();
 
-    // 获取页面高度
-    var sysInfo = wx.getSystemInfoSync();
-    obj.setData({
-      funs: funs,
-      chooseList: chooseList,
-      sysInfo: sysInfo
-    });
+
     
   },
 
   /**
-   * goto
+   * 数组大小调整为3个
    */
-  goto (e) {
-    console.log(e.currentTarget.dataset.link);
+  resizeList: (funList,len) => {
+    var blocksDiv1 = [], blockDiv1 = [], blocksDiv2 = [], blockDiv2 = [];
+    for (var i = 0; i < funList.length; i++) {
+      if (funList[i].type == 1) {
+        blockDiv1.push(funList[i]);
+      } else {
+        blockDiv2.push(funList[i]);
+      }
+      if (blockDiv1.length == len) {
+        blocksDiv1.push(blockDiv1); 
+        blockDiv1 = []; 
+      }
+      if (blockDiv2.length == len) {
+        blocksDiv2.push(blockDiv2); 
+        blockDiv2 = []; 
+      }
+      if (i == (funList.length - 1)) {
+        if (blockDiv1.length > 0) {
+          blocksDiv1.push(blockDiv1); 
+        }
+        if (blockDiv2.length > 0) {
+          blocksDiv2.push(blockDiv2); 
+        }
+      }
+    }
+    obj.setData({
+      blocksDiv1: blocksDiv1,
+      blocksDiv2: blocksDiv2
+    });
   },
+
+
 
 })

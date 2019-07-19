@@ -1,6 +1,3 @@
 {
-  "usingComponents": {
-    "i-drawer": "../../dist/drawer/index"
-  },
-  "navigationBarTitleText": "地图组件"
+  "navigationBarTitleText": "预约办税"
 }

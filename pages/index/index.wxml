@@ -1,61 +1,35 @@
-<view class="page-body">
-  <view class="page-section page-section-gap">
-    <map
-      id="myMap"
-      style="width: 100%; height: {{sysInfo.windowHeight}}px;"
-      latitude="{{latitude}}"
-      longitude="{{longitude}}"
-      markers="{{markers}}"
-      covers="{{covers}}"
-      subkey='{{subkey}}'
-      show-location,
-      bindmarkertap='changeMarker'>
-              <!-- 操作按钮 -->
-              <cover-view class='coverView'>
-                  <!-- 办税点筛选 -->
-                  <cover-view class='block' wx:for = '{{funs}}' wx:for-item = 'fun' wx:key='' bindtap='{{fun.fun}}' data-link = '{{fun.link}}'>
-                        <cover-view class='iconDiv'>
-                              <cover-image src='{{fun.iconPath}}'></cover-image>
-                        </cover-view>
-                        <cover-view class='name'>{{fun.name}}</cover-view>
-                  </cover-view>
+<!-- 首页 -->
+<view class = 'content' wx:if = '{{!isLogin && !showDemo}}'>
 
-              </cover-view>
-
-              <!-- 弹出框 -->
-              <cover-view>
-                    
-              </cover-view>
-      </map>
-
-      <view>
-            <i-drawer mode='right' visible='{{show}}' bind:close='onClose' >
-            <!-- style='width: {{sysInfo.windowWidth*0.8}}px; height: {{sysInfo.windowHeight}}px' -->
-                              <cover-view class='result' >
-                                    <!-- closeLine -->
-                                    <cover-view class='closeLine'>
-                                          <cover-view class='closeDiv' bindtap='onClose' >
-                                                <cover-image src='../../image/close.png'></cover-image>
-                                          </cover-view>
-                                    </cover-view>
-
-                                    <!-- 选择类型 -->
-                                    <cover-view class='line {{chooseIndex == (chooseList.length-1) ? "lastLine" : ""}}' wx:for = '{{chooseList}}' wx:key = '' wx:for-index = 'chooseIndex'>
-                                          <cover-view class='title'>{{item.title}}</cover-view>
-                                          <cover-view class='value'>{{item.data[0].name}}</cover-view>
-                                          <cover-view class='moreIcon'>
-                                                      <cover-image src='../../image/more.png'></cover-image>
-                                          </cover-view>
-                                    </cover-view>
-                                  
-
-                                    <cover-view class='search'>筛选</cover-view>
-
-                              </cover-view>
-             </i-drawer>
-      </view>
+  <!-- 轮播图 -->
+  <view class='pics'>
+    <swiper indicator-dots autoplay circular interval = '3000'>
+      <swiper-item class='radius'> 
+        <image src='{{base_img_url}}/logo2.jpg' mode='aspectFill'></image>
+      </swiper-item>
+      <swiper-item class='radius'> 
+        <image src='{{base_img_url}}/shipLogox.jpg' mode='aspectFill'></image>
+      </swiper-item>
+      <swiper-item class='radius'> 
+        <image src='{{base_img_url}}/shipLogoy.jpg' mode='aspectFill'></image>
+      </swiper-item>
+    </swiper>
   </view>
 
 
+  <!-- 日常管理 -->
+  <view class='blocks' wx:if='{{blocksDiv2 && blocksDiv2.length > 0}}'>
+    <!-- <view class='blocks-title'>日常管理</view> -->
+    <view class='blocks-content' wx:for='{{blocksDiv2}}' wx:key='' wx:for-item='blockDiv'>
+      <view class='blocks-item' wx:for='{{blockDiv}}' wx:key='' data-key = '{{item.pkey}}' data-value = '{{item.pvalue}}' data-userpriv = '{{item.userpriv}}' data-message='功能暂无！'>
+        <view class='blocks-icon'>
+          <image src='{{item.icon}}'></image>
+        </view>
+        <view class='blocks-memo'>
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
 
 </view>

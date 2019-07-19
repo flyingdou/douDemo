@@ -1,13 +1,44 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/test/test",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/query/query",
+    "pages/announce/announce",
+    "pages/mine/mine"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "demo",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icon/tabBar-icon/home.png",
+        "selectedIconPath": "icon/tabBar-icon/home-selected.png"
+      },
+      {
+        "pagePath": "pages/query/query",
+        "text": "咨询",
+        "iconPath": "icon/tabBar-icon/boat.png",
+        "selectedIconPath": "icon/tabBar-icon/boat-selected.png"
+      },
+      {
+        "pagePath": "pages/announce/announce",
+        "text": "宣传",
+        "iconPath": "icon/tabBar-icon/deviceInfo.png",
+        "selectedIconPath": "icon/tabBar-icon/deviceInfo-selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "icon/tabBar-icon/mine.png",
+        "selectedIconPath": "icon/tabBar-icon/mine-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }

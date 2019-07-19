@@ -6,5 +6,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
+  
+  constant: {
+    base_domain: 'https://dms.zcwish.com/'
+  }
+
+  
  
 })
